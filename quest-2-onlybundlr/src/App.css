@@ -1,38 +1,79 @@
-.App {
-  text-align: center;
+/* RightNav.css */
+.right-nav-container {
+  width:25%; /* Adjust the width as needed */
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  padding-top: 1rem;
+  background-color: #f8f8f8; /* Replace with desired background color */
+  padding-left: 1rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logo-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo-icon {
+  font-size: 3rem;
+  color: #ff3e5e; /* Replace with desired logo color */
+}
+
+.logo-text {
+  font-size: 3rem;
+  color: #ff3e5e; /* Replace with desired text color */
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: #ffffff; /* Replace with desired background color */
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.profiles-container {
+  margin-bottom: 1rem;
+}
+
+.swiper-container {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.swiper-slide {
+  position: relative;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.swiper-pagination {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
+
+.swiper-pagination-bullet {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #ddd; /* Replace with desired bullet color */
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+/* Add any additional styles for the SuggestedProfile component if needed */

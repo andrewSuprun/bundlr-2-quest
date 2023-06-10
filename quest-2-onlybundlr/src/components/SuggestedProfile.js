@@ -1,43 +1,53 @@
-import React, { useState, useEffect } from "react";
-import { useProfile } from "@lens-protocol/react";
+import React, { useState, useEffect } from 'react';
+import { useProfile } from '@lens-protocol/react';
 
 const SuggestedProfile = ({ handle }) => {
-	const { data: profile, loading } = useProfile({ handle });
-	const [profilePicture, setProfilePicture] = useState("");
-	const [coverPicture, setCoverPicture] = useState("");
+  const { data: profile, loading } = useProfile({ handle });
+  const [profilePicture, setProfilePicture] = useState('');
+  const [coverPicture, setCoverPicture] = useState('');
 
-	useEffect(() => {
-		// BUILDOOOORS: Complete this
-	}, [loading]);
+  useEffect(() => {
+    if (profile) {
+      setProfilePicture(profile.picture?.original.url);
+      setCoverPicture(profile.coverPicture?.original.url);
+      console.log(profile);
+    }
+  }, [loading]);
 
-	return (
-		<div className="relative" key={profile?.id}>
-			{coverPicture && (
-				<img
-					className="rounded-lg absolute top-0 left-0 h-32 w-full object-cover px-1 py-1 "
-					src={coverPicture}
-				/>
-			)}
+  return (
+    <div className="relative" key={profile?.id}>
+      {coverPicture && (
+        <img
+          className="rounded-lg w-full h-40 object-cover px-1 py-1"
+          src={coverPicture}
+          alt="Cover Picture"
+        />
+      )}
 
-			<div className="h-32 w-full ">
-				<div className="mx-2 mt-2 flex flex-row bg-secondary opacity-90 rounded-xl">
-					{profilePicture && (
-						<img
-							className="inline-block h-8 w-8 mb-1 mt-1 ml-1 rounded-full ring-2 ring-white"
-							src={profilePicture}
-							alt={handle}
-						/>
-					)}
+      <div className="bg-white rounded-lg shadow-lg mt-2">
+        <div className="p-4 flex items-center">
+          {profilePicture && (
+            <div className="w-12 h-12 overflow-hidden rounded-full mr-4">
+              <img
+                className="h-full w-full object-cover"
+                src={profilePicture}
+                alt={handle}
+              />
+            </div>
+          )}
 
-					<h2 className="ml-2 self-center">
-						<a className="font-main underline decoration-contast" href={"/" + handle}>
-							{handle}
-						</a>
-					</h2>
-				</div>
-			</div>
-		</div>
-	);
+          <div>
+            <h2 className="text-xl font-semibold mb-1">
+              <a href={`/${handle}`} className="hover:underline">
+                {handle}
+              </a>
+            </h2>
+            <p className="text-gray-600 text-sm">Followers: {profile?.followers || 0}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default SuggestedProfile;
